@@ -3,33 +3,36 @@ import unittest
 
 # Unit test cases
 class MinProductTestCase(unittest.TestCase):
-    def test_void_string(self):
+    def test_not_list(self):
+        self.assertRaises(TypeError, min_product, "Typo")
+
+    def test_void_list(self):
         self.assertRaises(ValueError, min_product, [])
 
-    def test_one_string(self):
+    def test_one_list(self):
         self.assertRaises(ValueError, min_product, [1])
 
-    def test_two_string(self):
+    def test_two_list(self):
         expected_output = -1
         self.assertEqual(expected_output, min_product([1, -1]))
 
-    def test_positive_string_no_zero(self):
+    def test_positive_list_no_zero(self):
         expected_output = 2
         self.assertEqual(expected_output, min_product([3, 3, 1, 2, 2]))
 
-    def test_positive_string_with_zero(self):
+    def test_positive_list_with_zero(self):
         expected_output = 0
         self.assertEqual(expected_output, min_product([3, 1, 2, 0]))
 
-    def test_negative_string_no_zero(self):
+    def test_negative_list_no_zero(self):
         expected_output = 1
         self.assertEqual(expected_output, min_product([-3, -1, -1, -2]))
 
-    def test_positive_string_with_zero(self):
+    def test_positive_list_with_zero(self):
         expected_output = 0
         self.assertEqual(expected_output, min_product([-3, -1, -2, 0]))
 
-    def test_general_string(self):
+    def test_general_list(self):
         expected_output = -10
         self.assertEqual(expected_output, min_product([10, 0, -1]))
 
@@ -38,6 +41,10 @@ def min_product(arr):
     """Takes array of real numbers
     Returns minimal product of 2 elements
     Raise an exception if not enough elements"""
+
+    # Argument must be a list
+    if not isinstance(arr, list):
+        raise TypeError("Argument must be a list")
 
     # Special cases:
     # Len(arr)<2 - undefined
