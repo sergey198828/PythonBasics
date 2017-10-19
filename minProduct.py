@@ -28,7 +28,7 @@ class MinProductTestCase(unittest.TestCase):
         expected_output = 1
         self.assertEqual(expected_output, min_product([-3, -1, -1, -2]))
 
-    def test_positive_list_with_zero(self):
+    def test_negative_list_with_zero(self):
         expected_output = 0
         self.assertEqual(expected_output, min_product([-3, -1, -2, 0]))
 
