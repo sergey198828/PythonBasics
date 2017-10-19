@@ -4,6 +4,9 @@ import unittest
 
 # Unit test cases
 class ValidateLoginTestCase(unittest.TestCase):
+    def test_non_string_login(self):
+        self.assertRaises(TypeError, login_validation, 4.1)
+
     def test_void_login(self):
         expected_output = ['Login length must be between 1 and 20 symbols', 'Login must start from letter', 'Login must \
 end by letter or digit']
@@ -33,6 +36,10 @@ def login_validation(login):
     """Function
     Takes login as string
     Returns result of compliance validation as array of strings, void array means pass"""
+
+    # Argument must be a string
+    if not isinstance(login, str):
+        raise TypeError("Argument must be a string")
 
     result = []
     # Check for length
