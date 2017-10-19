@@ -23,7 +23,6 @@ class WordDistanceTestCase(unittest.TestCase):
         self.assertEqual(expected_output, word_distance("polynomi", "palyndrom"))
 
 
-
 def word_distance(word1, word2):
     """Function
     Takes two words as strings
@@ -44,8 +43,8 @@ def word_distance(word1, word2):
         return len(word1)
 
     # Initializing matrix
-    d = [[None] * (len(word2) + 1) for _ in range(len(word1) + 1)]
-    d[0][0] = 0
+    d = [[0] * (len(word2) + 1) for _ in range(len(word1) + 1)]
+
     # Initializing matrix
     for i in range(1, len(word1) + 1):
         d[i][0] = i
